@@ -9,22 +9,22 @@ function getComputerChoice(choice){
 
 function playRound (playerSelection, computerSelection){
 
-    if (player === "Rock" && getComputerChoice === "Paper") {
-        console.log("Você perdeu!");
-        
+    if (playerSelection === computerSelection) {
+        return "Its a tie!";
+    } else if (player === "Scissors" && getComputerChoice === "Paper") {
+        return "Você ganhou!";
     } else if (player === "Rock" && getComputerChoice === "Scissors") {
-        console.log("Você ganhou!");
-    } else if (player === "Rock" && getComputerChoice === "Rock") {
-        console.log ("Empate!");
-    } else if (player === "Paper" && getComputerChoice === "Paper") {
-        console.log ("Empate!");
+        return "Você ganhou!";
     }else if (player === "Paper" && getComputerChoice === "Rock") {
-        console.log ("Você ganhou!");
-    } else if (player === "Paper" && getComputerChoice === "Scissors") {
-        console.log ("Você perdeu!")
+        return "Você ganhou!";
+    } else {
+        return "Você perdeu!";
+    }
+        
     }
 
-}
+    console.log(playRound(playerSelection, computerSelection));
+
 
 
    
