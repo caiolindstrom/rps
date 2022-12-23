@@ -45,7 +45,35 @@ function playRound (getPlayerChoice, getComputerChoice){
         }              
         
 
+function game() {
+    const playerScore = 0;
+    const computerScore = 0;
+    
+    const playerSelection = getPlayerChoice;
+    const computerSelection = getComputerChoice;
+    let roundResult = playRound(playerSelection, computerSelection);
+
+    for (let i = 0; i < 5; i++){
+        playRound();
+
+        if (roundResult === "Você ganhou!") {
+            ++playerScore;
+        
+        } else if (roundResult === "Você perdeu!") {
+            ++computerScore;
+        
+    }
+}
+
+    if (playerScore > computerScore) {
+        return "Você ganhou, parabéns!"; 
+    } else if (playerScore < computerScore) {
+        return "Você perdeu, tente novamente!";
+    } else { 
+        return "Empate!";
+    }
+}
    
+game();
 
-
-console.log(playRound(getPlayerChoice(), getComputerChoice()));
+// console.log(playRound(getPlayerChoice(), getComputerChoice()));
