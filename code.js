@@ -1,30 +1,51 @@
-const choice = ["Rock" , "Paper" , "Scissors"];
-const player = prompt("Choose between Rock, Paper or Scissors");
-const computerSelection = getComputerChoice;
-const playerSelection = player;
-
-function getComputerChoice(choice){
-    return choice[Math.floor(Math.random() * choice.length)];
+function getComputerChoice(){
+    options = ["Rock" , "Paper", "Scissors"];
+    var result = options[Math.floor(Math.random() * 3)];
+    console.log(result);
+    return result;
+      
 }
 
-function playRound (playerSelection, computerSelection){
+function getPlayerChoice(){
+    var choice = prompt("Choose between Rock, Paper and Scissors");
+    console.log(choice);
+    return choice;
+}
 
-    if (playerSelection === computerSelection) {
-        return "Its a tie!";
-    } else if (player === "Scissors" && getComputerChoice === "Paper") {
-        return "Você ganhou!";
-    } else if (player === "Rock" && getComputerChoice === "Scissors") {
-        return "Você ganhou!";
-    }else if (player === "Paper" && getComputerChoice === "Rock") {
-        return "Você ganhou!";
-    } else {
-        return "Você perdeu!";
+function playRound (getPlayerChoice, getComputerChoice){
+    
+    
+    const choice1 = getPlayerChoice;
+    const choice2 = getComputerChoice;
+
+    if (choice1 === choice2){
+        return "É um empate";
     }
+        if (choice1 === "Paper"){
+            if (choice2 === "Rock") {
+                return "Você ganhou!"
+            } else {
+                return "Você perdeu!"
+            }
+        }
+        if (choice1 === "Rock") {
+            if (choice2 === "Scissors") {
+                return "Você ganhou!"
+            }else{
+                return "Você perdeu!"
+                }
+        }
+        if (choice1 === "Scissors") {
+            if (choice2 === "Paper") {
+                return "Você ganhou!"
+            }else{
+                return "Você perdeu!"
+            }
+            }
+        }              
         
-    }
-
-    console.log(playRound(playerSelection, computerSelection));
-
-
 
    
+
+
+console.log(playRound(getPlayerChoice(), getComputerChoice()));
