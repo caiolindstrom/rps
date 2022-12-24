@@ -1,5 +1,5 @@
 function getComputerChoice(){
-    options = ["Rock" , "Paper", "Scissors"];
+    options = ["rock" , "paper", "scissors"];
     var result = options[Math.floor(Math.random() * 3)];
     console.log(result);
     return result;
@@ -7,73 +7,75 @@ function getComputerChoice(){
 }
 
 function getPlayerChoice(){
-    var choice = prompt("Choose between Rock, Paper and Scissors");
+    var choice = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
     console.log(choice);
     return choice;
 }
 
-function playRound (getPlayerChoice, getComputerChoice){
-    
-    
-    const choice1 = getPlayerChoice;
-    const choice2 = getComputerChoice;
-
-    if (choice1 === choice2){
-        return "É um empate";
+function checkWinner (getPlayerChoice, getComputerChoice){
+    if(getPlayerChoice === getComputerChoice) {
+        return "Tie";
     }
-        if (choice1 === "Paper"){
-            if (choice2 === "Rock") {
-                return "Você ganhou!"
-            } else {
-                return "Você perdeu!"
-            }
-        }
-        if (choice1 === "Rock") {
-            if (choice2 === "Scissors") {
-                return "Você ganhou!"
-            }else{
-                return "Você perdeu!"
-                }
-        }
-        if (choice1 === "Scissors") {
-            if (choice2 === "Paper") {
-                return "Você ganhou!"
-            }else{
-                return "Você perdeu!"
-            }
-            }
-        }              
+    else if (
+        (getPlayerChoice == "rock" && getComputerChoice == "scissors") ||
+        (getPlayerChoice == "paper" && getComputerChoice == "rock") ||
+        (getPlayerChoice == "scissors" && getComputerChoice == "paper")
+    ) {
+        return "Player";
+    }
+    else {
+        return "Computer";
+    }
+    
+             
+}
+    function playRound (getPlayerChoice, getComputerChoice) {
+        let roundResult = checkWinner(getPlayerChoice, getComputerChoice);
+
+        if (roundResult === "Player") {
+            console.log("Você venceu esse Round!")
+             
+        } else if (roundResult === "Computer") {
+            console.log("Você perdeu esse Round!")
+            
+        
+    } else {
+        return "Esse Round foi um empate!";
+    }
+ }
         
 
 function game() {
-    const playerScore = 0;
-    const computerScore = 0;
+    console.log("Inicio do jogo");
+    let playerScore = 0;
+    let computerScore = 0;
     
-    const playerSelection = getPlayerChoice;
-    const computerSelection = getComputerChoice;
-    let roundResult = playRound(playerSelection, computerSelection);
-
     for (let i = 0; i < 5; i++){
-        playRound();
-
-        if (roundResult === "Você ganhou!") {
-            ++playerScore;
-        
-        } else if (roundResult === "Você perdeu!") {
-            ++computerScore;
-        
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("-------")
+        if (checkWinner(playerSelection, computerSelection) == "Player"){
+            playerScore++;
+        }   
+     else if (checkWinner(playerSelection, computerSelection) == "Computer"){
+            computerScore++;
+    
+        }
     }
-}
-
-    if (playerScore > computerScore) {
-        return "Você ganhou, parabéns!"; 
-    } else if (playerScore < computerScore) {
-        return "Você perdeu, tente novamente!";
-    } else { 
-        return "Empate!";
+    console.log("Game Over")
+    if (playerScore > computerScore){
+        console.log ("Player Wins");
     }
-}
-   
-game();
+    else if (playerScore < computerScore) {
+        console.log ("Computer WIns");
+    }
+    else{
+        console.log("Tie!");
+    }
+ }
 
-// console.log(playRound(getPlayerChoice(), getComputerChoice()));
+
+   game();
+
+
