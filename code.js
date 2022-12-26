@@ -33,10 +33,10 @@ function checkWinner (getPlayerChoice, getComputerChoice){
         let roundResult = checkWinner(getPlayerChoice, getComputerChoice);
 
         if (roundResult === "Player") {
-            console.log("Você venceu esse Round!")
+            return "Você venceu esse Round!"
              
         } else if (roundResult === "Computer") {
-            console.log("Você perdeu esse Round!")
+            return "Você perdeu esse Round!"
             
         
     } else {
