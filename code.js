@@ -17,9 +17,9 @@ function checkWinner (getPlayerChoice, getComputerChoice){
         return "Tie";
     }
     else if (
-        (getPlayerChoice == "rock" && getComputerChoice == "scissors") ||
-        (getPlayerChoice == "paper" && getComputerChoice == "rock") ||
-        (getPlayerChoice == "scissors" && getComputerChoice == "paper")
+        (getPlayerChoice === "rock" && getComputerChoice === "scissors") ||
+        (getPlayerChoice === "paper" && getComputerChoice === "rock") ||
+        (getPlayerChoice === "scissors" && getComputerChoice === "paper")
     ) {
         return "Player";
     }
@@ -33,20 +33,20 @@ function checkWinner (getPlayerChoice, getComputerChoice){
         let roundResult = checkWinner(getPlayerChoice, getComputerChoice);
 
         if (roundResult === "Player") {
-            return "Você venceu esse Round!"
+            return "You won this round!"
              
         } else if (roundResult === "Computer") {
-            return "Você perdeu esse Round!"
+            return "You lost this round!"
             
         
     } else {
-        return "Esse Round foi um empate!";
+        return "It was a Tie!";
     }
  }
         
 
 function game() {
-    console.log("Inicio do jogo");
+    console.log("Game Start!");
     let playerScore = 0;
     let computerScore = 0;
     
