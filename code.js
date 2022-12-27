@@ -20,9 +20,7 @@ function getScissors(){
     return choice;
 }
 
-document.getElementById("rock").addEventListener("click", getRock);
-document.getElementById("paper").addEventListener("click", getPaper);
-document.getElementById("scissors").addEventListener("click", getScissors);
+
 
 
 function getComputerChoice(){
@@ -34,7 +32,7 @@ function getComputerChoice(){
 
 
 
-function checkWinner() {
+function checkWinner(getPlayerChoice, getComputerChoice) {
     if (getPlayerChoice === getComputerChoice) {
         return "Its a Tie";
     } else if (
@@ -50,3 +48,27 @@ function checkWinner() {
     
     }
 
+    function playRound(getPlayerChoice, getComputerChoice) {
+        var result = checkWinner(getPlayerChoice, getComputerChoice);
+        if (result === "Player"){
+            return "You won this round!"
+        }
+        else if (result === "Computer") {
+            return "You lost this round!"
+        }
+        else {
+            return "It was a Tie!"
+        }
+    }
+
+    document.getElementById("rock").addEventListener("click", getRock);
+    document.getElementById("paper").addEventListener("click", getPaper);
+    document.getElementById("scissors").addEventListener("click", getScissors);
+    document.getElementById("rock").addEventListener("click", getComputerChoice);
+    document.getElementById("paper").addEventListener("click", getComputerChoice);
+    document.getElementById("scissors").addEventListener("click", getComputerChoice);
+    document.getElementById("rock").addEventListener("click", playRound);
+    document.getElementById("paper").addEventListener("click", playRound);
+    document.getElementById("scissors").addEventListener("click", playRound);
+
+    console.log(playRound(getPlayerChoice, getComputerChoice))
