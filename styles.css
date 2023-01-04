@@ -1,7 +1,29 @@
-button {
-    background-color: rgb(8, 8, 8);
-    border: 1;
-    color: white;
-    align-items: center;
+.options {
+    background-color: rgb(99, 124, 206);
+    border: 3px solid black;
+    color: black;
+    padding: 20px;
+    line-height: 30px;
+    width: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    
+
+    
 }
 
+#mainDiv {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lightblue;
+    border: 3px solid;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+#mainDiv::after{
+    content: "\a";
+    white-space: pre;
+}

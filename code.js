@@ -1,4 +1,9 @@
 let buttons = document.querySelectorAll('button');
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+
+
 let computerSelection;
 let playerSelection;
 let computerScore = 0;
@@ -9,9 +14,9 @@ let playerScore = 0;
 // Seleção aleatória do computador, funcionando
 function computerPlay() {
     const myArray = ["rock" , "paper" , "scissors"];
-    randomComputer = myArray[Math.floor(Math.random() * 3)];
-    console.log(randomComputer);
-    return randomComputer;
+    computerSelection = myArray[Math.floor(Math.random() * 3)];
+    console.log(computerSelection);
+    return computerSelection;
     
 }
 
@@ -21,11 +26,19 @@ buttons.forEach((button) => {
     button.addEventListener("click", function () {
         playerSelection = this.textContent;
         console.log(playerSelection);
-      
         
-        playRound(playerSelection, computerSelection);
+        
+        playerText.textContent = `Player: ${playerSelection}`;
+        computerText.textContent = `Computer: ${computerPlay()}`;
+        resultText.textContent = `Result: ${playRound()}`;
+        getResult();
+        
+        
+        
+        
         if (playerScore === 5 || computerScore === 5) {
             console.log("Fim de jogo")
+            alert ("Fim de Jogo");
         }
 
     });
@@ -35,14 +48,14 @@ buttons.forEach((button) => {
 function playRound(getPlayerChoice, getComputerChoice) {
 
     getPlayerChoice = playerSelection;
-    getComputerChoice = computerPlay();
+    getComputerChoice = computerSelection;
     
     
 
     if (getPlayerChoice === getComputerChoice) {
 
         console.log("Its a Tie!")
-        return "tie";
+        return "Draw!";
         
     } else if (
         (getPlayerChoice === "rock" && getComputerChoice === "scissors") ||
@@ -53,32 +66,23 @@ function playRound(getPlayerChoice, getComputerChoice) {
             playerScore = playerScore + 1;
             console.log("Player Wins");
             
-            
-            
-            
-            
+            return "Player Wins";
 
         }
         else {
             
             computerScore = computerScore + 1;
-            console.log("Computer Wins");
+            console.log("Computer Wins");  
             
-
-            
-            
-            
+            return "Computer Wins";
             
 
         }
-        
-        document.getElementById('pScore').textContent = playerScore;
-        document.getElementById('cScore').textContent = computerScore;
-       
-        
-        
     }
 
-    
-
+    //Função pra computar o resultado nas variáveis
+function getResult(){
+    document.getElementById('pScore').textContent = playerScore;
+    document.getElementById('cScore').textContent = computerScore;
+}
     
